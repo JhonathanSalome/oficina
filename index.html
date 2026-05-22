@@ -1,13 +1,19 @@
+# Código completo do site totalmente responsivo
+
+```html
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-<meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Oficina Du</title>
-<link href="https://fonts.googleapis.com" rel="preconnect"/>
-<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
 <style>
+
 *{
   margin:0;
   padding:0;
@@ -18,15 +24,24 @@
 :root{
   --red:#ff2d2d;
   --dark:#050505;
-  --card:#111111;
   --gray:#a1a1aa;
+  --accent-neon:#a3e635;
+}
+
+html,body{
+  width:100%;
+  overflow-x:hidden;
 }
 
 body{
   font-family:'Inter',sans-serif;
   background:var(--dark);
-  color:white;
-  overflow-x:hidden;
+  color:#fff;
+}
+
+img{
+  max-width:100%;
+  display:block;
 }
 
 body::before{
@@ -51,7 +66,7 @@ header{
   top:0;
   width:100%;
   z-index:999;
-  background:rgba(0,0,0,.5);
+  background:rgba(0,0,0,.55);
   backdrop-filter:blur(16px);
   border-bottom:1px solid rgba(255,255,255,.08);
 }
@@ -60,7 +75,7 @@ header{
   display:flex;
   justify-content:space-between;
   align-items:center;
-  padding:20px 0;
+  padding:18px 0;
 }
 
 .logo{
@@ -78,18 +93,17 @@ nav{
 
 nav a{
   text-decoration:none;
-  color:white;
+  color:#fff;
   font-weight:600;
   font-size:14px;
-  transition:.3s;
   position:relative;
 }
 
 nav a::after{
   content:'';
   position:absolute;
-  bottom:-6px;
   left:0;
+  bottom:-6px;
   width:0;
   height:2px;
   background:var(--red);
@@ -100,21 +114,66 @@ nav a:hover::after{
   width:100%;
 }
 
-.btn{
-  border:none;
+.btn,
+.btn-outline{
   padding:16px 32px;
   border-radius:18px;
+  border:none;
   font-weight:700;
   cursor:pointer;
-  background:linear-gradient(135deg,#ff0000,#ff4d4d);
-  color:white;
   transition:.4s;
+}
+
+.btn{
+  background:linear-gradient(135deg,#ff0000,#ff4d4d);
+  color:#fff;
   box-shadow:0 10px 40px rgba(255,0,0,.4);
 }
 
 .btn:hover{
   transform:translateY(-4px);
-  box-shadow:0 20px 60px rgba(255,0,0,.5);
+}
+
+.btn-outline{
+  background:rgba(255,255,255,.05);
+  border:1px solid rgba(255,255,255,.15);
+  color:#fff;
+}
+
+.btn-outline:hover{
+  border-color:var(--red);
+}
+
+.marquee-container{
+  width:100%;
+  background:var(--accent-neon);
+  color:#000;
+  overflow:hidden;
+  white-space:nowrap;
+  position:fixed;
+  top:85px;
+  left:0;
+  z-index:998;
+  padding:10px 0;
+}
+
+.marquee-content{
+  display:flex;
+  animation:scroll-left 20s linear infinite;
+}
+
+.marquee-item{
+  display:flex;
+  align-items:center;
+  gap:40px;
+  margin:0 5px;
+  font-weight:800;
+  font-size:.9rem;
+}
+
+@keyframes scroll-left{
+  from{transform:translateX(0)}
+  to{transform:translateX(-50%)}
 }
 
 .hero{
@@ -135,29 +194,26 @@ nav a:hover::after{
   height:100%;
   object-fit:cover;
   opacity:.28;
-  transform:scale(1.08);
 }
 
 .overlay{
   position:absolute;
   inset:0;
-  background:
-  linear-gradient(to bottom,rgba(0,0,0,.2),rgba(0,0,0,.92));
+  background:linear-gradient(to bottom, rgba(0,0,0,.2), rgba(0,0,0,.92));
 }
 
 .hero-content{
   position:relative;
   z-index:2;
   max-width:950px;
-  animation:fadeUp 1s ease;
 }
 
 .hero-subtitle{
   color:var(--red);
   text-transform:uppercase;
   letter-spacing:5px;
-  font-weight:700;
   font-size:14px;
+  font-weight:700;
 }
 
 .hero h1{
@@ -169,7 +225,6 @@ nav a:hover::after{
 
 .hero h1 span{
   color:var(--red);
-  text-shadow:0 0 20px rgba(255,0,0,.5);
 }
 
 .hero p{
@@ -184,22 +239,6 @@ nav a:hover::after{
   justify-content:center;
   gap:20px;
   flex-wrap:wrap;
-}
-
-.btn-outline{
-  background:rgba(255,255,255,.05);
-  border:1px solid rgba(255,255,255,.15);
-  color:white;
-  padding:16px 32px;
-  border-radius:18px;
-  backdrop-filter:blur(10px);
-  cursor:pointer;
-  transition:.4s;
-}
-
-.btn-outline:hover{
-  border-color:var(--red);
-  background:rgba(255,0,0,.08);
 }
 
 section{
@@ -245,46 +284,23 @@ section{
   background:rgba(255,255,255,.03);
   border:1px solid rgba(255,255,255,.08);
   border-radius:28px;
-  padding:45px;
+  padding:40px;
   backdrop-filter:blur(14px);
   transition:.5s;
-  position:relative;
-  overflow:hidden;
-}
-
-.card::before{
-  content:'';
-  position:absolute;
-  top:0;
-  left:-100%;
-  width:100%;
-  height:100%;
-  background:linear-gradient(
-    90deg,
-    transparent,
-    rgba(255,255,255,.05),
-    transparent
-  );
-  transition:.7s;
-}
-
-.card:hover::before{
-  left:100%;
 }
 
 .card:hover{
-  transform:translateY(-12px);
+  transform:translateY(-10px);
   border-color:rgba(255,0,0,.4);
-  box-shadow:0 25px 60px rgba(255,0,0,.12);
 }
 
 .card-icon{
-  font-size:52px;
+  font-size:50px;
   margin-bottom:20px;
 }
 
 .card h3{
-  font-size:28px;
+  font-size:26px;
   margin-bottom:14px;
 }
 
@@ -293,35 +309,12 @@ section{
   line-height:1.8;
 }
 
-.about-content{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
-  gap:60px;
-  align-items:center;
-}
-
-.about img{
-  width:100%;
-  border-radius:30px;
-  box-shadow:0 25px 80px rgba(255,0,0,.2);
-}
-
-.about p{
-  color:var(--gray);
-  line-height:1.9;
-  font-size:18px;
-}
-
 .cta{
-  background:
-  linear-gradient(
-    135deg,
-    #7f0000,
-    #ff1e1e
-  );
+  background:linear-gradient(135deg,#7f0000,#ff1e1e);
   text-align:center;
   border-radius:40px;
   margin:0 20px 80px;
+  padding:90px 20px;
 }
 
 .cta h2{
@@ -342,80 +335,70 @@ footer{
   color:#71717a;
 }
 
-@keyframes fadeUp{
-  from{
-    opacity:0;
-    transform:translateY(40px);
+@media (max-width:1024px){
+
+  .hero h1{
+    font-size:62px;
   }
-  to{
-    opacity:1;
-    transform:translateY(0);
+
+  .section-title h2,
+  .cta h2{
+    font-size:48px;
   }
 }
 
+@media (max-width:768px){
 
-@media(max-width:768px){
-
-  header{
-    padding:0;
+  .container{
+    padding:0 16px;
   }
 
   .navbar{
-    padding:14px 0;
     flex-direction:column;
     gap:14px;
+    padding:14px 0;
   }
 
   .logo{
-    font-size:26px;
+    font-size:24px;
   }
 
   nav{
-    display:flex;
-    gap:18px;
+    gap:15px;
     flex-wrap:wrap;
     justify-content:center;
   }
 
   nav a{
-    font-size:13px;
+    font-size:12px;
   }
 
-  .btn{
+  .btn,
+  .btn-outline{
     width:100%;
-    max-width:260px;
-    padding:14px 22px;
+    max-width:280px;
+    padding:14px 20px;
     font-size:14px;
   }
 
   .marquee-container{
-    top:145px;
+    top:135px;
     padding:8px 0;
   }
 
   .marquee-item{
-    font-size:.72rem;
-    gap:20px;
+    font-size:.70rem;
+    gap:18px;
   }
 
   .hero{
-    padding:260px 16px 70px;
+    padding:240px 16px 70px;
     min-height:auto;
-  }
-
-  .hero-content{
-    max-width:100%;
-  }
-
-  .hero-subtitle{
-    font-size:11px;
-    letter-spacing:3px;
   }
 
   .hero h1{
     font-size:42px;
     line-height:1.1;
-    margin:22px 0;
   }
 
   .hero p{
@@ -428,279 +411,232 @@ footer{
     align-items:center;
   }
 
+  section{
+    padding:80px 0;
+  }
+
+  .section-title{
+    margin-bottom:45px;
+  }
+
   .section-title h2,
   .cta h2{
-    font-size:34px;
-    line-height:1.1;
+    font-size:32px;
+    line-height:1.2;
   }
 
   .section-title p,
   .cta p{
-    font-size:15px;
+    font-size:14px;
   }
 
   .card{
-    padding:28px;
-    border-radius:22px;
+    padding:24px;
   }
 
   .card h3{
     font-size:22px;
   }
 
+  .card p{
+    font-size:14px;
+  }
+
   .cta{
-    margin:0 12px 60px;
-    padding:60px 20px;
-    border-radius:28px;
+    margin:0 12px 50px;
+    padding:50px 20px;
+    border-radius:24px;
   }
 
   footer{
-    font-size:13px;
+    font-size:12px;
     line-height:1.7;
   }
 }
 
-/* Faixa verde animada */
-:root{
-  --accent-neon:#a3e635;
+@media (max-width:480px){
+
+  .hero{
+    padding-top:230px;
+  }
+
+  .hero h1{
+    font-size:34px;
+  }
+
+  .hero p{
+    font-size:14px;
+  }
+
+  .section-title h2,
+  .cta h2{
+    font-size:26px;
+  }
+
+  .card{
+    padding:20px;
+  }
+
+  .btn,
+  .btn-outline{
+    max-width:100%;
+  }
 }
 
-.marquee-container{
-  width:100%;
-  background-color:var(--accent-neon);
-  color:#000;
-  padding:10px 0;
-  overflow:hidden;
-  display:flex;
-  white-space:nowrap;
-  position:fixed;
-  top:85px;
-  left:0;
-  z-index:998;
-  box-shadow:0 8px 25px rgba(0,0,0,.25);
-}
-
-.marquee-content{
-  display:flex;
-  animation:scroll-left 20s linear infinite;
-}
-
-.marquee-item{
-  font-size:.9rem;
-  font-weight:800;
-  text-transform:uppercase;
-  letter-spacing:1px;
-  margin:0 4px;
-  display:flex;
-  align-items:center;
-  gap:40px;
-}
-
-@keyframes scroll-left{
-  0%{transform:translateX(0);}
-  100%{transform:translateX(-50%);}
-}
 </style>
 </head>
 <body>
+
 <header>
-<div class="container navbar">
-<div class="logo">Oficina Du</div>
-<nav>
-<a href="#inicio">Início</a>
-<a href="#servicos">Serviços</a>
-<!--<a href="#sobre">Sobre</a>-->
-<a href="#link">Contato</a>
-</nav>
-<button class="btn">Chamar Agora</button>
-</div>
+  <div class="container navbar">
+
+    <div class="logo">Oficina Du</div>
+
+    <nav>
+      <a href="#inicio">Início</a>
+      <a href="#servicos">Serviços</a>
+      <a href="#contato">Contato</a>
+    </nav>
+
+    <button class="btn">Chamar Agora</button>
+
+  </div>
 </header>
+
 <div class="marquee-container">
-<div class="marquee-content">
-<div class="marquee-item">
-<span>REMAP ECU STAGE 3</span> <span>✦</span>
-<span>RETÍFICA DE MOTORES</span> <span>✦</span>
-<span>DINAMÔMETRO 4X4</span> <span>✦</span>
-<span>ELETRÔNICA EMBARCADA</span> <span>✦</span>
-</div>
-<div class="marquee-item">
-<span>REMAP ECU STAGE 3</span> <span>✦</span>
-<span>RETÍFICA DE MOTORES</span> <span>✦</span>
-<span>DINAMÔMETRO 4X4</span> <span>✦</span>
-<span>ELETRÔNICA EMBARCADA</span> <span>✦</span>
-</div>
-</div>
+  <div class="marquee-content">
+
+    <div class="marquee-item">
+      <span>REMAP ECU STAGE 3</span>
+      <span>✦</span>
+      <span>RETÍFICA DE MOTORES</span>
+      <span>✦</span>
+      <span>DINAMÔMETRO 4X4</span>
+      <span>✦</span>
+      <span>ELETRÔNICA EMBARCADA</span>
+    </div>
+
+    <div class="marquee-item">
+      <span>REMAP ECU STAGE 3</span>
+      <span>✦</span>
+      <span>RETÍFICA DE MOTORES</span>
+      <span>✦</span>
+      <span>DINAMÔMETRO 4X4</span>
+      <span>✦</span>
+      <span>ELETRÔNICA EMBARCADA</span>
+    </div>
+
+  </div>
 </div>
 
 <section class="hero" id="inicio">
-<img alt="Carro" src="https://images.unsplash.com/photo-1609521263047-f8f205293f24?q=80&w=2070&auto=format&fit=crop"/>
-<div class="overlay"></div>
-<div class="hero-content">
-<span class="hero-subtitle">Oficina Premium em São Paulo</span>
-<h1>
-        Mecânica Profissional
-        <span>Para Seu Carro</span>
-</h1>
-<p>
-        Tecnologia automotiva, atendimento especializado e serviços de alta
-        performance para garantir segurança e máxima eficiência do seu veículo.
-      </p>
-<div class="hero-buttons">
-<button class="btn">Solicitar Orçamento</button>
-<button class="btn-outline">Ver Serviços</button>
-</div>
-</div>
+
+  <img src="https://images.unsplash.com/photo-1609521263047-f8f205293f24?q=80&w=2070&auto=format&fit=crop" alt="Carro">
+
+  <div class="overlay"></div>
+
+  <div class="hero-content">
+
+    <span class="hero-subtitle">
+      Oficina Premium em São Paulo
+    </span>
+
+    <h1>
+      Mecânica Profissional
+      <span>Para Seu Carro</span>
+    </h1>
+
+    <p>
+      Tecnologia automotiva, atendimento especializado e serviços de alta performance.
+    </p>
+
+    <div class="hero-buttons">
+      <button class="btn">Solicitar Orçamento</button>
+      <button class="btn-outline">Ver Serviços</button>
+    </div>
+
+  </div>
 </section>
+
 <section id="servicos">
-<div class="container">
-<div class="section-title">
-<span>Serviços</span>
-<h2>Tudo que seu carro precisa</h2>
-<p>
-          Atendimento completo com equipamentos modernos e profissionais especializados.
-        </p>
-</div>
-<div class="grid services-grid">
-<div class="card">
-<div class="card-icon">🔧</div>
-<h3>Revisão Completa</h3>
-<p>Manutenção preventiva e corretiva para máxima segurança.</p>
-</div>
-<div class="card">
-<div class="card-icon">⚙️</div>
-<h3>Motor e Câmbio</h3>
-<p>Especialistas em motores nacionais e importados.</p>
-</div>
-<div class="card">
-<div class="card-icon">🚘</div>
-<h3>Freios e Suspensão</h3>
-<p>Performance, estabilidade e segurança total.</p>
-</div>
-<div class="card">
-<div class="card-icon">🛢️</div>
-<h3>Troca de Óleo</h3>
-<p>Lubrificantes premium para maior durabilidade.</p>
-</div>
-</div>
-</div>
-</section>
-<!--<section class="diferenciais">
-    <div class="container">
-      <div class="grid services-grid">
-        <div class="card">
-          <div class="card-icon">🛡️</div>
-          <h3>Garantia de Serviço</h3>
-          <p>Qualidade garantida em todos os serviços executados.</p>
-        </div>
+  <div class="container">
 
-        <div class="card">
-          <div class="card-icon">⏱️</div>
-          <h3>Atendimento Rápido</h3>
-          <p>Agilidade para colocar seu veículo de volta na rua.</p>
-        </div>
-
-        <div class="card">
-          <div class="card-icon">📞</div>
-          <h3>Suporte Completo</h3>
-          <p>Atendimento personalizado via WhatsApp e telefone.</p>
-        </div>
-      </div>
-    </div>
-  </section>-->
-<!--<section class="about" id="sobre">
-    <div class="container about-content">
-      <img src="https://images.unsplash.com/photo-1619642751034-765dfdf7c58e?q=80&w=1974&auto=format&fit=crop" alt="Oficina">
-
-      <div>
-        <div class="section-title" style="text-align:left; margin-bottom:0;">
-          <span>Nossa Oficina</span>
-        </div>
-
-        <p>
-          Trabalhamos com transparência, qualidade e equipamentos modernos
-          para oferecer um atendimento rápido, eficiente e seguro para o seu veículo.
-        </p>
-      </div>
-    </div>
-  </section>-->
-<!--<section>
-    <div class="container">
-      <div class="section-title">
-        <span>Estrutura</span>
-        <h2>Nossa Oficina em Destaque</h2>
-      </div>
-
-      <div class="grid gallery-grid">
-        <div class="gallery-item">
-          <img src="https://images.unsplash.com/photo-1487754180451-c456f719a1fc?q=80&w=2070&auto=format&fit=crop" alt="Oficina">
-        </div>
-
-        <div class="gallery-item">
-          <img src="https://images.unsplash.com/photo-1517524206127-48bbd363f3d7?q=80&w=2070&auto=format&fit=crop" alt="Oficina">
-        </div>
-
-        <div class="gallery-item">
-          <img src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?q=80&w=2070&auto=format&fit=crop" alt="Oficina">
-        </div>
-      </div>
-    </div>
-  </section>-->
-<section class="cta" id="link">
-<div class="container">
-<h2>Agende sua revisão hoje mesmo</h2>
-<p>
-        Atendimento rápido, garantia de qualidade e suporte especializado.
+    <div class="section-title">
+      <span>Serviços</span>
+      <h2>Tudo que seu carro precisa</h2>
+      <p>
+        Atendimento completo com equipamentos modernos.
       </p>
-<button class="btn" style="background:black;">
-        Chamar no WhatsApp
-      </button>
-</div>
-</section>
-<!--<section id="contato">
-    <div class="container contact-grid">
-      <div class="contact-info">
-        <div class="section-title" style="text-align:left; margin-bottom:20px;">
-          <span>Contato</span>
-        </div>
-
-        <h3>Fale com nossa equipe</h3>
-
-        <p>
-          Tire dúvidas, peça um orçamento ou agende seu atendimento.
-        </p>
-
-        <p><strong>Telefone:</strong> (11) 99999-9999</p>
-        <p><strong>Endereço:</strong> São Paulo - SP</p>
-        <p><strong>E-mail:</strong> contato@turbocar.com</p>
-      </div>
-
-      <div class="contact-card">
-        <form>
-          <input type="text" placeholder="Seu nome">
-          <input type="email" placeholder="Seu e-mail">
-          <input type="text" placeholder="Modelo do veículo">
-          <textarea rows="5" placeholder="Descreva o problema do veículo"></textarea>
-
-          <button class="btn" type="submit">
-            Enviar Solicitação
-          </button>
-        </form>
-      </div>
     </div>
-  </section>-->
-<footer>
-    © 2026 TurboCar Auto Center • Oficina Premium • Todos os direitos reservados.
-  </footer>
-<script>
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-      anchor.addEventListener('click', function (e) {
-        e.preventDefault();
 
-        document.querySelector(this.getAttribute('href')).scrollIntoView({
-          behavior: 'smooth'
-        });
+    <div class="grid services-grid">
+
+      <div class="card">
+        <div class="card-icon">🔧</div>
+        <h3>Revisão Completa</h3>
+        <p>Manutenção preventiva e corretiva.</p>
+      </div>
+
+      <div class="card">
+        <div class="card-icon">⚙️</div>
+        <h3>Motor e Câmbio</h3>
+        <p>Especialistas em motores nacionais e importados.</p>
+      </div>
+
+      <div class="card">
+        <div class="card-icon">🚘</div>
+        <h3>Freios e Suspensão</h3>
+        <p>Performance, estabilidade e segurança total.</p>
+      </div>
+
+      <div class="card">
+        <div class="card-icon">🛢️</div>
+        <h3>Troca de Óleo</h3>
+        <p>Lubrificantes premium para maior durabilidade.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section class="cta" id="contato">
+  <div class="container">
+
+    <h2>Agende sua revisão hoje mesmo</h2>
+
+    <p>
+      Atendimento rápido, garantia de qualidade e suporte especializado.
+    </p>
+
+    <button class="btn" style="background:black;">
+      Chamar no WhatsApp
+    </button>
+
+  </div>
+</section>
+
+<footer>
+  © 2026 Oficina Du • Todos os direitos reservados.
+</footer>
+
+<script>
+
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+
+    anchor.addEventListener('click', function (e) {
+
+      e.preventDefault();
+
+      document.querySelector(this.getAttribute('href')).scrollIntoView({
+        behavior: 'smooth'
       });
+
     });
-  </script>
+
+  });
+
+</script>
+
 </body>
 </html>
+```
