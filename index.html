@@ -151,7 +151,40 @@
     }
 
     /* ========================= */
-    /* FAIXA (MOVADA PARA DENTRO DO HEADER) */
+    /* BOTÃO REDONDO DO WHATSAPP (CANTO INFERIOR DIREITO) */
+    /* ========================= */
+    .btn-whatsapp {
+      position: fixed;
+      bottom: 25px;
+      right: 25px;
+      z-index: 10000;
+      background: #25d366;
+      color: white;
+      text-decoration: none;
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 8px 24px rgba(37, 211, 102, 0.4);
+      transition: .3s;
+    }
+
+    .btn-whatsapp:hover {
+      transform: translateY(-5px);
+      background: #20ba5a;
+      box-shadow: 0 12px 30px rgba(37, 211, 102, 0.6);
+    }
+
+    .btn-whatsapp svg {
+      width: 32px;
+      height: 32px;
+      fill: currentColor;
+    }
+
+    /* ========================= */
+    /* FAIXA */
     /* ========================= */
     .marquee-container {
       width: 100%;
@@ -450,6 +483,18 @@
         font-size: 13px;
         line-height: 1.7;
       }
+      
+      /* Ajuste responsivo do WhatsApp Redondo */
+      .btn-whatsapp {
+        bottom: 16px;
+        right: 16px;
+        width: 54px;
+        height: 54px;
+      }
+      .btn-whatsapp svg {
+        width: 28px;
+        height: 28px;
+      }
     }
 
     @media(max-width: 480px) {
@@ -540,13 +585,19 @@
     <div class="container">
       <h2>Agende sua revisão hoje mesmo</h2>
       <p>Atendimento rápido, garantia de qualidade e suporte especializado.</p>
-      <button class="btn" style="background:black;">Chamar no WhatsApp</button>
+      <button class="btn">Solicitar Orçamento</button>
     </div>
   </section>
 
   <footer>
     © 2026 Oficina Du • Todos os direitos reservados.
   </footer>
+
+  <a href="https://wa.me/5511999999999" target="_blank" class="btn-whatsapp" aria-label="Chamar no WhatsApp">
+    <svg viewBox="0 0 24 24">
+      <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397.01 12.008.01c3.202.001 6.212 1.246 8.477 3.514 2.266 2.268 3.507 5.28 3.505 8.484-.004 6.657-5.34 11.997-11.953 11.997-2.005-.001-3.973-.502-5.713-1.457L0 24zm6.59-4.846c1.6.95 3.188 1.449 4.825 1.451 5.436 0 9.86-4.42 9.863-9.864.001-2.636-1.023-5.115-2.884-6.978C16.484 1.9 14.021.875 11.4.875c-5.445 0-9.87 4.421-9.874 9.865-.001 1.761.472 3.479 1.374 4.981L1.871 21.1l5.776-1.514zm11.281-5.306c-.312-.156-1.848-.912-2.126-1.013-.279-.102-.482-.156-.684.156-.202.311-.782 1.012-.958 1.215-.177.203-.355.228-.667.071-.312-.156-1.318-.485-2.51-1.549-.928-.827-1.554-1.849-1.737-2.16-.182-.312-.02-.48.136-.635.141-.14.312-.364.468-.546.156-.182.208-.312.312-.52.104-.208.052-.39-.026-.546-.078-.156-.684-1.65-.938-2.261-.247-.595-.499-.514-.684-.523-.177-.008-.38-.01-.582-.01-.203 0-.532.076-.81.38-.279.304-1.064 1.039-1.064 2.535s1.089 2.942 1.241 3.149c.152.203 2.143 3.272 5.19 4.587.725.313 1.291.5 1.733.64.729.231 1.392.198 1.916.12.584-.087 1.848-.755 2.11-1.448.263-.693.263-1.291.185-1.413-.077-.122-.279-.195-.591-.351z"/>
+    </svg>
+  </a>
 
   <script>
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
