@@ -148,6 +148,22 @@
       padding: 15px 28px;
       border-radius: 16px;
       cursor: pointer;
+      text-decoration: none;
+      display: inline-block;
+    }
+    
+    /* Novo botão: Preto Prateado (Dark Silver) */
+    .btn-dark-silver {
+      background: linear-gradient(135deg, #434343 0%, #1c1c1c 100%);
+      border: 1px solid #5a5a5a;
+      box-shadow: 0 10px 30px rgba(0,0,0,.6), inset 0 1px 1px rgba(255,255,255,0.2);
+      color: #e0e0e0;
+    }
+    
+    .btn-dark-silver:hover {
+      background: linear-gradient(135deg, #505050 0%, #252525 100%);
+      box-shadow: 0 12px 35px rgba(0,0,0,.8), inset 0 1px 1px rgba(255,255,255,0.3);
+      color: #fff;
     }
 
     /* ========================= */
@@ -226,7 +242,6 @@
       text-align: center;
       position: relative;
       overflow: hidden;
-      /* Ajustado de 220px para 160px para diminuir o espaço */
       padding: 160px 20px 100px;
     }
 
@@ -355,6 +370,41 @@
       margin-bottom: 20px;
     }
 
+    .card-icon span {
+        display: inline-block;
+        transition: transform 0.3s ease;
+    }
+
+    @keyframes icon-pulse {
+        0%, 100% { transform: scale(1); }
+        50% { transform: scale(1.15); }
+    }
+
+    @keyframes gear-spin {
+        0% { transform: scale(1.15) rotate(0deg); }
+        100% { transform: scale(1.15) rotate(180deg); }
+    }
+
+    @keyframes car-vibrate {
+        0%, 100% { transform: scale(1) translateX(0); }
+        25% { transform: scale(1.1) translateX(1px); }
+        50% { transform: scale(1.1) translateX(-1px); }
+        75% { transform: scale(1.1) translateX(1px); }
+    }
+
+    .card:hover .card-icon .icon-tool,
+    .card:hover .card-icon .icon-oil {
+        animation: icon-pulse 0.5s ease-in-out;
+    }
+
+    .card:hover .card-icon .icon-gear {
+        animation: gear-spin 0.6s ease-in-out;
+    }
+
+    .card:hover .card-icon .icon-car {
+        animation: car-vibrate 0.4s ease-in-out;
+    }
+
     .card h3 {
       font-size: 26px;
       margin-bottom: 14px;
@@ -406,8 +456,7 @@
         justify-content: center;
         padding: 18px 0;
       }
-      /* Ajustado de 240px para 180px */
-      .hero { padding-top: 180px; }
+      .hero { padding-top: 240px; }
       .hero h1 { font-size: 60px; }
       .section-title h2 { font-size: 44px; }
       .cta h2 { font-size: 44px; }
@@ -436,10 +485,9 @@
         font-size: .72rem;
         gap: 24px;
       }
-      /* Ajustado de 240px para 180px */
       .hero {
         min-height: auto;
-        padding: 180px 16px 80px;
+        padding: 240px 16px 80px;
       }
       .hero-subtitle {
         font-size: 11px;
@@ -500,8 +548,7 @@
     }
 
     @media(max-width: 480px) {
-      /* Ajustado de 240px para 180px */
-      .hero { padding-top: 180px; }
+      .hero { padding-top: 240px; }
       .hero h1 { font-size: 34px; }
       .section-title h2 { font-size: 28px; }
       .cta h2 { font-size: 28px; }
@@ -542,12 +589,11 @@
     <img src="https://images.unsplash.com/photo-1609521263047-f8f205293f24?q=80&w=2070&auto=format&fit=crop" alt="Carro">
     <div class="overlay"></div>
     <div class="hero-content">
-      <span class="hero-subtitle"><span>✦</span>	Hospital do seu Carro	<span>✦</span></span>
+      <span class="hero-subtitle"><span>✦</span>	Hospital do Carro	<span>✦</span></span>
       <h1>Mecânica Profissional <span>Para Seu Carro</span></h1>
       <p>Tecnologia automotiva, atendimento especializado e serviços de alta performance para garantir segurança e máxima eficiência do seu veículo.</p>
       <div class="hero-buttons">
-        <button class="btn">Solicitar Orçamento</button>
-        <button class="btn-outline">Ver Serviços</button>
+        <a href="#servicos" class="btn-outline">Ver Serviços</a>
       </div>
     </div>
   </section>
@@ -561,22 +607,22 @@
       </div>
       <div class="grid services-grid">
         <div class="card">
-          <div class="card-icon">🔧</div>
+          <div class="card-icon"><span class="icon-tool">🔧</span></div>
           <h3>Revisão Completa</h3>
           <p>Manutenção preventiva e corretiva para máxima segurança.</p>
         </div>
         <div class="card">
-          <div class="card-icon">⚙️</div>
+          <div class="card-icon"><span class="icon-gear">⚙️</span></div>
           <h3>Motor e Câmbio</h3>
           <p>Especialistas em motores nacionais e importados.</p>
         </div>
         <div class="card">
-          <div class="card-icon">🚘</div>
+          <div class="card-icon"><span class="icon-car">🚘</span></div>
           <h3>Freios e Suspensão</h3>
           <p>Performance, estabilidade e segurança total.</p>
         </div>
         <div class="card">
-          <div class="card-icon">🛢️</div>
+          <div class="card-icon"><span class="icon-oil">🛢️</span></div>
           <h3>Troca de Óleo</h3>
           <p>Lubrificantes premium para maior durabilidade.</p>
         </div>
@@ -586,14 +632,14 @@
 
   <section class="cta" id="contato">
     <div class="container">
-      <h2>Agende sua revisão hoje mesmo</h2>
-      <p>Atendimento rápido, garantia de qualidade e suporte especializado.</p>
-      <button class="btn">Solicitar Orçamento</button>
+      <h2>Faça sua revisão hoje mesmo</h2>
+      <p>Atendimento rápido e especializado, garantia de qualidade.</p>
+      <button class="btn btn-dark-silver">Endereço</button>
     </div>
   </section>
 
   <footer>
-    © 2026 Oficina  • Todos os direitos reservados.
+    © 2026 Oficina • Todos os direitos reservados.
   </footer>
 
   <a href="https://wa.me/5511999999999" target="_blank" class="btn-whatsapp" aria-label="Chamar no WhatsApp">
