@@ -74,7 +74,6 @@
       z-index: 999;
       background: rgba(0,0,0,.65);
       backdrop-filter: blur(14px);
-      border-bottom: 1px solid rgba(255,255,255,.08);
     }
 
     .navbar {
@@ -83,6 +82,7 @@
       align-items: center;
       justify-content: space-between;
       gap: 20px;
+      border-bottom: 1px solid rgba(255,255,255,.08);
     }
 
     .logo {
@@ -151,17 +151,13 @@
     }
 
     /* ========================= */
-    /* FAIXA */
+    /* FAIXA (MOVADA PARA DENTRO DO HEADER) */
     /* ========================= */
     .marquee-container {
       width: 100%;
       background: var(--green);
       color: #000;
       overflow: hidden;
-      position: fixed;
-      top: 85px;
-      left: 0;
-      z-index: 998;
       padding: 10px 0;
     }
 
@@ -369,7 +365,6 @@
 
     /* ========================= */
     /* TABLET E MOBILE (MEDIA QUERIES) */
-    /* Aqui está a responsividade! */
     /* ========================= */
     @media(max-width: 991px) {
       .navbar {
@@ -377,8 +372,7 @@
         justify-content: center;
         padding: 18px 0;
       }
-      .marquee-container { top: 110px; } /* Ajustado para colar na base do menu colapsado */
-      .hero { padding-top: 240px; } /* Ajustado para compensar a subida da faixa */
+      .hero { padding-top: 240px; }
       .hero h1 { font-size: 60px; }
       .section-title h2 { font-size: 44px; }
       .cta h2 { font-size: 44px; }
@@ -401,7 +395,6 @@
         font-size: 14px;
       }
       .marquee-container {
-        top: 110px; /* Ajustado de 160px para 110px */
         padding: 8px 0;
       }
       .marquee-item {
@@ -410,7 +403,7 @@
       }
       .hero {
         min-height: auto;
-        padding: 240px 16px 80px; /* Ajustado de 300px para 240px */
+        padding: 240px 16px 80px;
       }
       .hero-subtitle {
         font-size: 11px;
@@ -478,24 +471,24 @@
         <a href="#contato">Contato</a>
       </nav>
     </div>
-  </header>
 
-  <div class="marquee-container">
-    <div class="marquee-content">
-      <div class="marquee-item">
-        <span>REMAP ECU STAGE 3</span><span>✦</span>
-        <span>RETÍFICA DE MOTORES</span><span>✦</span>
-        <span>DINAMÔMETRO 4X4</span><span>✦</span>
-        <span>ELETRÔNICA EMBARCADA</span><span>✦</span>
-      </div>
-      <div class="marquee-item">
-        <span>REMAP ECU STAGE 3</span><span>✦</span>
-        <span>RETÍFICA DE MOTORES</span><span>✦</span>
-        <span>DINAMÔMETRO 4X4</span><span>✦</span>
-        <span>ELETRÔNICA EMBARCADA</span><span>✦</span>
+    <div class="marquee-container">
+      <div class="marquee-content">
+        <div class="marquee-item">
+          <span>REMAP ECU STAGE 3</span><span>✦</span>
+          <span>RETÍFICA DE MOTORES</span><span>✦</span>
+          <span>DINAMÔMETRO 4X4</span><span>✦</span>
+          <span>ELETRÔNICA EMBARCADA</span><span>✦</span>
+        </div>
+        <div class="marquee-item">
+          <span>REMAP ECU STAGE 3</span><span>✦</span>
+          <span>RETÍFICA DE MOTORES</span><span>✦</span>
+          <span>DINAMÔMETRO 4X4</span><span>✦</span>
+          <span>ELETRÔNICA EMBARCADA</span><span>✦</span>
+        </div>
       </div>
     </div>
-  </div>
+  </header>
 
   <section class="hero" id="inicio">
     <img src="https://images.unsplash.com/photo-1609521263047-f8f205293f24?q=80&w=2070&auto=format&fit=crop" alt="Carro">
